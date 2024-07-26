@@ -1,1 +1,0 @@
-modelo base de persistência para o crawler destinado à página pePI (pesquisa em Propriedade Industrial) do INPI (Instituto Nacional de Propriedade Industrial)

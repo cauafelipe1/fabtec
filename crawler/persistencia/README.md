@@ -1,0 +1,1 @@
+modelo base de persistência para o crawler 

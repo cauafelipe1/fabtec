@@ -1,0 +1,1 @@
+projeto destinado à criação de um crawler para o site https://busca.inpi.gov.br/pePI/
