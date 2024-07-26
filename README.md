@@ -1,0 +1,1 @@
+Repositório dedicado aos trabalhos relacionados ao projeto Fábrica de Software
