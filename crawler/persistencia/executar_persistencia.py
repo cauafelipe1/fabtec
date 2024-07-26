@@ -7,6 +7,6 @@ with app.app_context():
 
     @app.route("/")
     def inicio():
-        return 'backend operante, operação de editar'
+        return 'o sistema está em funcionamento!'
 
     app.run(debug=True, host="0.0.0.0")
