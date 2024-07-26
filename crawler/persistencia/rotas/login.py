@@ -29,43 +29,62 @@ def login():
 ''' 
 RESULTADOS DE TESTES:
 
-$ curl -X POST localhost:5000/login -d "{\"login\":\"douglas@moles.com.br\",\"senha\":\"12345678\"}" -H "Content-Type: application/json" 
+$ curl -X POST localhost:5000/login -d "{\"login\":\"douglas@gmail.com\",\"senha\":\"12345678\"}" -H "Content-Type: application/json"
 {
-  "detalhes": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1ODMxNTEzOSwianRpIjoiZTVmMGVjMGEtOGZjMC00N2QyLWE4YjItOTMzNTY4MjMwZTM5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Impvc2lsdmFAZ21haWwuY29tIiwibmJmIjoxNjU4MzE1MTM5LCJleHAiOjE2NTgzMTYwMzl9.DjTA7h8idYfFpXixYl7gCGtu9rmahlj2IXTtlbkE0nc", 
+  "detalhes": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTk3MDQwNiwianRpIjoiZTFhYTQ0M2UtNWI3MC00MjViLWJlYTEtOWNmMTkzOWExN2Y2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImRvdWdsYXNAZ21haWwuY29tIiwibmJmIjoxNzIxOTcwNDA2LCJjc3JmIjoiMjJlOTQ2NDAtNjE2NS00YzU1LTlhM2UtNTEwN2JhOTk4NzQ2IiwiZXhwIjoxNzIxOTc0MDA2fQ.AxHG99mbvujq8DGe1Yn-XNZivNbT7wCFd2br-X1UsAY",
   "resultado": "ok"
 }
 
-$ curl localhost:5000/listar/Pessoa 
+$ curl localhost:5000/listar/Pessoa -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTk3MDQwNiwianRpIjoiZTFhYTQ0M2UtNWI3MC00MjViLWJlYTEtOWNmMTkzOWExN2Y2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImRvdWdsYXNAZ21haWwuY29tIiwibmJmIjoxNzIxOTcwNDA2LCJjc3JmIjoiMjJlOTQ2NDAtNjE2NS00YzU1LTlhM2UtNTEwN2JhOTk4NzQ2IiwiZXhwIjoxNzIxOTc0MDA2fQ.AxHG99mbvujq8DGe1Yn-XNZivNbT7wCFd2br-X1UsAY"
+{
+  "detalhes": [
+    {
+      "cpf": "12345678901",
+      "email": "douglas@gmail.com",
+      "nome": "douglas",
+      "senha": "f5560c3296de4e0ef868574bf96fc778bc580931a8cae2d2631de27ba055db1be2afd769d658c684d8bc5ee0c1b2a7583ec862d5e994b806c6fa2ab4d54cd7f4"
+    },
+    {
+      "cpf": "11111111111",
+      "email": "hugo@gmail.com",
+      "nome": "hugo",
+      "senha": "629bc9ef82140705ecc6bca4745d5b0cc169e4e97a14b9aeaad37563b22272eb30068e9fa8d7c597586182647495b4405150e4489e6756b35603022395cb3ad9"
+    }
+  ],
+  "resultado": "ok"
+}
+
+$ curl localhost:5000/listar/Consulta -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTk3MDQwNiwianRpIjoiZTFhYTQ0M2UtNWI3MC00MjViLWJlYTEtOWNmMTkzOWExN2Y2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImRvdWdsYXNAZ21haWwuY29tIiwibmJmIjoxNzIxOTcwNDA2LCJjc3JmIjoiMjJlOTQ2NDAtNjE2NS00YzU1LTlhM2UtNTEwN2JhOTk4NzQ2IiwiZXhwIjoxNzIxOTc0MDA2fQ.AxHG99mbvujq8DGe1Yn-XNZivNbT7wCFd2br-X1UsAY"
+{
+  "detalhes": [
+    {
+      "chave": "exemplo1234567",
+      "conteudo": {
+        "descricao": "Exemplo de conte\u00fado",
+        "pedido": "35463232"
+      },
+      "data": "Mon, 22 Jul 2024 00:00:00 GMT",
+      "tipo": "marca",
+      "usuario": "douglas"
+    }
+  ],
+  "resultado": "ok"
+}
+
+$ curl -X POST localhost:5000/login -d "{\"login\":\"douglas@gmail.com\",\"senha\":\"douglas123\"}" -H "Content-Type: application/json" 
+{
+  "detalhes": "usuario ou senha incorreto(s)",
+  "resultado": "erro"
+}
+
+$ curl localhost:5000/listar/Pessoa
 {
   "msg": "Missing Authorization Header"
 }
 
-$ curl localhost:5000/listar/Pessoa -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY1ODMxNTEzOSwianRpIjoiZTVmMGVjMGEtOGZjMC00N2QyLWE4YjItOTMzNTY4MjMwZTM5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Impvc2lsdmFAZ21haWwuY29tIiwibmJmIjoxNjU4MzE1MTM5LCJleHAiOjE2NTgzMTYwMzl9.DjTA7h8idYfFpXixYl7gCGtu9rmahlj2IXTtlbkE0nc'
+$ curl localhost:5000/listar/Consulta
 {
-  "detalhes": [
-    {
-      "email": "josilva@gmail.com", 
-      "id": 1, 
-      "nome": "Jo\u00e3o da Silva", 
-      "senha": "53d32ccc72f314a7c2055f76bc938151b3a0b83861c8ec60a05dfd355f456b5c5fafbd0470da1bdefbbf1f9a9b256990e9c69b5faf93f6d79305ea1e4f7db9b5", 
-      "telefone": "47 99012 3232"
-    }, 
-    {
-      "email": "molive@gmail.com", 
-      "id": 2, 
-      "nome": "Maria Oliveira", 
-      "senha": "c31bdc2870e80708a57d0f8577f7d8b08ca4361f0a8528baf71cdcb00086e005b3b2d139d3f0d6192e17f354680c5f915c20a8118d90bec16af818e49ae73da2", 
-      "telefone": "47 98822 2531"
-    }
-  ], 
-  "resultado": "ok"
+  "msg": "Missing Authorization Header"
 }
 
-$ curl -X POST localhost:5000/login -d '{"login":"josilva@gmail.com","senha":"joao1234"}' -H 'Content-Type: application/json'
-{
-  "detalhes": "usuario ou senha incorreto(s)", 
-  "resultado": "erro"
-}
-
- 
 '''
