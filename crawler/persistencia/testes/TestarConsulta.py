@@ -1,11 +1,20 @@
 from modelo.consulta import *
-
+from geral.cripto import *
+from modelo.usuario import *
 # teste de consulta
 def run():
     with db_session:
-        diario = Consulta(usuario='douglas', tipo='marca', data=date(2024, 7, 22), chave='exemplo1234567', conteudo={'descricao': 'Exemplo de conteúdo', 'pedido': '35463232'})
-        commit()
-        print(diario.usuario, diario.tipo, diario.data, diario.id, diario.chave, diario.conteudo)
+        user_id = Usuario.get(id=1)
+        if user_id:
+            print("usuario encontrado!")
+            print("detalhes do usuario:")
+            print(json.dumps(user_id.json(), indent=4))
+
+            gerar_consulta = Consulta(tipo='marca', data=date.today(), chave='exemplo1234567', conteudo={'descricao': 'Exemplo de conteúdo', 'pedido': '35463232'}, usuario=user_id.json())
+            print("consulta cadastrada com sucesso!")
+            commit()
+        else:
+            print("usuario nao encontrado :(")
 
 # OBS.: ainda será implementada uma automatização de todos os atributos 
 # conforme as informações provenientes do webcrawler

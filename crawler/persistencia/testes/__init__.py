@@ -1,1 +1,1 @@
-__all__=['TestarPessoa', 'TestarCifrar', 'TestarConsulta']
+__all__=['TestarCriarAdmin', 'TestarCifrar', 'TestarConsulta']

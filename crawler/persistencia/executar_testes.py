@@ -1,8 +1,7 @@
-from modelo.pessoa import *
+from modelo.usuario import *
 from testes import *
 
 with app.app_context():
-
     TestarCifrar.run()
-    TestarPessoa.run()
+    TestarCriarAdmin.run()
     TestarConsulta.run()

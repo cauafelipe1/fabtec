@@ -1,6 +1,6 @@
 from geral.config import *
 from geral.cripto import *
-from modelo.pessoa import *
+from modelo.usuario import *
 
 #login para a obtenção do token
 @app.route("/login", methods=['POST'])
@@ -13,7 +13,7 @@ def login():
 
   #verfica se os dados fornecidos no curl são os mesmos da tabela
   with db_session:
-    encontrado = Pessoa.get(email=login, senha=cifrar(senha))
+    encontrado = Usuario.get(email=login, senha=cifrar(senha))
 
     if encontrado is None: 
         resposta = jsonify({"resultado": "erro", "detalhes":"usuario ou senha incorreto(s)"})

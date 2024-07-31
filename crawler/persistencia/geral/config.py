@@ -4,13 +4,10 @@ from flask import Flask, jsonify, request
 
 #importação do pony ORM
 from pony.orm import *
-from datetime import date
-import json
-
-from flask_cors import CORS
 
 # configurações
 app = Flask(__name__)
+from flask_cors import CORS
 
 CORS(app)  
 
@@ -21,6 +18,10 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
 
-app.config["JWT_SECRET_KEY"] = "super-secret" 
+app.config["JWT_SECRET_KEY"] = "super-secret" # mude isso
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
+
+#importações complementares
+import json
+from datetime import date

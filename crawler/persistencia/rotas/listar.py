@@ -1,6 +1,6 @@
 from geral.config import *
 from modelo.consulta import *
-from modelo.pessoa import *
+from modelo.usuario import *
 
 #acessado pelo localhost:5000/listar/classe
 @app.route("/listar/<string:classe>")
@@ -14,9 +14,9 @@ def listar(classe):
         
         dados = None
         # lista os dados da tabela person.db
-        if classe == "Pessoa":
+        if classe == "Usuario":
             with db_session:
-                dados = Pessoa.select()[:]
+                dados = Usuario.select()[:]
                 print(dados)
 
         # lista os dados da tabela consult.db
