@@ -2,7 +2,7 @@ from geral.config import *
 from geral.cripto import *
 from modelo.usuario import *
 
-#login para a obtenção do token
+# login para a obtenção do token
 @app.route("/login", methods=['POST'])
 def login():
   
@@ -11,7 +11,7 @@ def login():
   login = dados['login']
   senha = dados['senha']
 
-  #verfica se os dados fornecidos no curl são os mesmos da tabela
+  # verfica se os dados fornecidos no curl são os mesmos do banco de dados
   with db_session:
     encontrado = Usuario.get(email=login, senha=cifrar(senha))
 

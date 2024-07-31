@@ -17,7 +17,7 @@ class Consulta(db.Entity):
                f'{self.chave}, {self.conteudo}' +\
                f'{self.usuario}'
 
-    # expressao da classe no formato json
+    # expressão da classe no formato json
     def json(self):
         return {
             "tipo": self.tipo,

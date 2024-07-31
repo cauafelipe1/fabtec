@@ -4,7 +4,7 @@ db = Database()
 
 # criação da classe Usuario (usuário que fará o login)
 class Usuario(db.Entity):
-    tipo = "comum"
+    tipo = Required(str)
     nome = Required(str)
     cpf = Required(str)
     email = Required(str)
@@ -29,11 +29,11 @@ class Usuario(db.Entity):
             "situacao": self.situacao
         }
 
-#criação do banco de dados sqlites
+# criação do banco de dados sqlites
 db.bind(provider='sqlite', filename='usuarios.db', create_db=True)
 db.generate_mapping(create_tables=True)
 
-#validador de cpf
+# validador de cpf
 def validador_cpf(cpf_usado: str) -> bool:
     # remove os valores não numerico do cpf
     cpf_usado = ''.join(filter(str.isdigit, cpf_usado))

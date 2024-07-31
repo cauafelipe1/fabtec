@@ -2,7 +2,7 @@ from geral.config import *
 from modelo.consulta import *
 from rotas import *
 
-#programa responsável por rodar o sistema
+# programa responsável por rodar o sistema
 with app.app_context():
 
     @app.route("/")

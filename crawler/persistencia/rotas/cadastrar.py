@@ -2,7 +2,7 @@ from geral.config import *
 from geral.cripto import *
 from modelo.usuario import *
 
-#login para a obtenção do token
+# rota para cadastrar novos usuarios
 @app.route("/cadastrar", methods=['POST'])
 def cadastrar():
     
@@ -18,7 +18,7 @@ def cadastrar():
     
     if encontrado is None: 
         if validador_cpf(dados['cpf']):
-            novo_usuario = Usuario(nome=dados['nome'], cpf=dados['cpf'], email=dados['email'], senha= cifrar(dados['senha']), data_cadastro= date.today(), situacao="ativo")
+            novo_usuario = Usuario(tipo="comum", nome=dados['nome'], cpf=dados['cpf'], email=dados['email'], senha= cifrar(dados['senha']), data_cadastro= date.today(), situacao="ativo")
             commit()
             resposta = jsonify({"resultado": "ok", "detalhes":"novo usuario adicionado!"})
         else:

@@ -2,7 +2,7 @@ from geral.config import *
 from modelo.consulta import *
 from modelo.usuario import *
 
-#acessado pelo localhost:5000/listar/classe
+# acessado pelo localhost:5000/listar/classe
 @app.route("/listar/<string:classe>")
 @jwt_required()
 
@@ -13,13 +13,13 @@ def listar(classe):
         print(current_user)
         
         dados = None
-        # lista os dados da tabela person.db
+        # lista os dados da tabela usuarios.db
         if classe == "Usuario":
             with db_session:
                 dados = Usuario.select()[:]
                 print(dados)
 
-        # lista os dados da tabela consult.db
+        # lista os dados da tabela consultas.db
         elif classe == "Consulta":
             with db_session:
                 dados = Consulta.select()[:]

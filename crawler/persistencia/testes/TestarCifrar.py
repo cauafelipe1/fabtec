@@ -1,6 +1,6 @@
 from geral.cripto import *
 
-#teste da cifra utilizada na senha do usuário
+# teste da cifra utilizada na senha dos usuários
 def run():
     senha = '12345'
     cifrado = cifrar(senha)

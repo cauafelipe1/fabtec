@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request
 # https://stackoverflow.com/questions/70383004/modulenotfounderror-no-module-named-flaskext
 
-#importação do pony ORM
+# importação do pony ORM
 from pony.orm import *
 
 # configurações
@@ -22,6 +22,6 @@ app.config["JWT_SECRET_KEY"] = "super-secret" # mude isso
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
 
-#importações complementares
+# importações complementares
 import json
 from datetime import date

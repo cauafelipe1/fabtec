@@ -1,6 +1,7 @@
 from hashlib import blake2b
 
 # https://docs.python.org/3/library/hashlib.html
+# hash responsável por encriptar as senhas dos usuarios
 
 def cifrar(senha):
     h = blake2b()
