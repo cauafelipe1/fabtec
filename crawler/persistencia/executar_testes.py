@@ -1,3 +1,4 @@
+from modelo.consulta import *
 from modelo.usuario import *
 from testes import *
 

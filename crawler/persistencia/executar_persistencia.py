@@ -1,5 +1,6 @@
 from geral.config import *
 from modelo.consulta import *
+from modelo.usuario import *
 from rotas import *
 
 # programa responsável por rodar o sistema

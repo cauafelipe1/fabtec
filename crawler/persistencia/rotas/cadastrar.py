@@ -14,11 +14,11 @@ def cadastrar():
 
     # verfica se os dados fornecidos no curl já não estão presentes no banco
     encontrado = Usuario.get(email=login, senha=cifrar(senha))
-    # caso nao seja encontrado, valida o cpf e cadastra os dados
     
+    # caso nao seja encontrado, valida o cpf e cadastra os dados
     if encontrado is None: 
         if validador_cpf(dados['cpf']):
-            novo_usuario = Usuario(tipo="comum", nome=dados['nome'], cpf=dados['cpf'], email=dados['email'], senha= cifrar(dados['senha']), data_cadastro= date.today(), situacao="ativo")
+            novo_usuario = Usuario(tipo="comum", nome=dados['nome'], cpf=dados['cpf'], email=dados['email'], senha= cifrar(dados['senha']), data_ativacao= date.today(), situacao="ativo")
             commit()
             resposta = jsonify({"resultado": "ok", "detalhes":"novo usuario adicionado!"})
         else:

@@ -1,7 +1,5 @@
 from geral.config import *
-from modelo.usuario import *
-
-db = Database()
+from modelo.usuario import Usuario, db
 
 # criação da classe consulta
 class Consulta(db.Entity):
@@ -9,7 +7,7 @@ class Consulta(db.Entity):
     data = Required(date)
     chave = Required(str)
     conteudo = Required(Json)
-    usuario = Required(Json)
+    usuario = Required(Usuario)
 
     # expressão da classe no formato str
     def __str__(self):
@@ -21,11 +19,12 @@ class Consulta(db.Entity):
     def json(self):
         return {
             "tipo": self.tipo,
-            "data": self.data,
+            "data": str(self.data),
             "chave": self.chave,
             "conteudo": self.conteudo,
-            "usuario": self.usuario,
+            "usuario": self.usuario.json(),
         }
+
 # criação do banco de dados sqlite
 db.bind(provider='sqlite', filename='consultas.db', create_db=True)
 db.generate_mapping(create_tables=True)

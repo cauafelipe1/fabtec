@@ -9,13 +9,15 @@ class Usuario(db.Entity):
     cpf = Required(str)
     email = Required(str)
     senha = Required(str)
-    data_cadastro = Required(date)
+    data_ativacao = Required(date)
     situacao = Required(str)
+    consultas = Set('Consulta')
+    # relacao um para muitos entre usuarios e consultas
     
     # expressão da classe em str
     def __str__(self):
         return f'{self.tipo}, {self.nome}, {str(self.cpf)}, ' +\
-               f'{self.email}, {self.senha}, {str(self.data_cadastro)}, {self.situacao}'
+               f'{self.email}, {self.senha}, {str(self.data_ativacao)}, {self.situacao}'
 
     # expressao da classe no formato json
     def json(self):
@@ -25,13 +27,10 @@ class Usuario(db.Entity):
             "cpf": self.cpf,
             "email": self.email,
             "senha": self.senha,
-            "data de cadastro": str(self.data_cadastro),
+            "data de ativacao": str(self.data_ativacao),
             "situacao": self.situacao
         }
 
-# criação do banco de dados sqlites
-db.bind(provider='sqlite', filename='usuarios.db', create_db=True)
-db.generate_mapping(create_tables=True)
 
 # validador de cpf
 def validador_cpf(cpf_usado: str) -> bool:
