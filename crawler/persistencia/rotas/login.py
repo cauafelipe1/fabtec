@@ -29,55 +29,42 @@ def login():
 ''' 
 RESULTADOS DE TESTES:
 
-$ curl -X POST localhost:5000/login -d "{\"login\":\"douglas@gmail.com\",\"senha\":\"12345678\"}" -H "Content-Type: application/json"
+$ curl -X POST localhost:5000/login -d "{\"login\":\"admin@admin.com\",\"senha\":\"admin123\"}" -H "Content-Type: application/json"
 {
-  "detalhes": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTk3MDQwNiwianRpIjoiZTFhYTQ0M2UtNWI3MC00MjViLWJlYTEtOWNmMTkzOWExN2Y2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImRvdWdsYXNAZ21haWwuY29tIiwibmJmIjoxNzIxOTcwNDA2LCJjc3JmIjoiMjJlOTQ2NDAtNjE2NS00YzU1LTlhM2UtNTEwN2JhOTk4NzQ2IiwiZXhwIjoxNzIxOTc0MDA2fQ.AxHG99mbvujq8DGe1Yn-XNZivNbT7wCFd2br-X1UsAY",
+  "detalhes": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjYyMTg2NCwianRpIjoiMzYwZTcxMWMtZjQxMi00NTRkLTg2MGYtOGRjMzJlNWQyMDE2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluQGFkbWluLmNvbSIsIm5iZiI6MTcyMjYyMTg2NCwiY3NyZiI6ImVkN2JiZTJhLTE3ODUtNDc1OS04NDI1LTYxYmRhYmZkNzA1NSIsImV4cCI6MTcyMjYyNTQ2NH0.Y_SsS_sft9JXEl9D9Md_dKAI-dS7bl-2En_CGaQ3Vg4",
   "resultado": "ok"
 }
 
-$ curl localhost:5000/listar/Pessoa -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTk3MDQwNiwianRpIjoiZTFhYTQ0M2UtNWI3MC00MjViLWJlYTEtOWNmMTkzOWExN2Y2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImRvdWdsYXNAZ21haWwuY29tIiwibmJmIjoxNzIxOTcwNDA2LCJjc3JmIjoiMjJlOTQ2NDAtNjE2NS00YzU1LTlhM2UtNTEwN2JhOTk4NzQ2IiwiZXhwIjoxNzIxOTc0MDA2fQ.AxHG99mbvujq8DGe1Yn-XNZivNbT7wCFd2br-X1UsAY"
+$ curl localhost:5000/listar/Usuario -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjYyMTg2NCwianRpIjoiMzYwZTcxMWMtZjQxMi00NTRkLTg2MGYtOGRjMzJlNWQyMDE2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluQGFkbWluLmNvbSIsIm5iZiI6MTcyMjYyMTg2NCwiY3NyZiI6ImVkN2JiZTJhLTE3ODUtNDc1OS04NDI1LTYxYmRhYmZkNzA1NSIsImV4cCI6MTcyMjYyNTQ2NH0.Y_SsS_sft9JXEl9D9Md_dKAI-dS7bl-2En_CGaQ3Vg4"
 {
   "detalhes": [
     {
-      "cpf": "12345678901",
-      "email": "douglas@gmail.com",
-      "nome": "douglas",
-      "senha": "f5560c3296de4e0ef868574bf96fc778bc580931a8cae2d2631de27ba055db1be2afd769d658c684d8bc5ee0c1b2a7583ec862d5e994b806c6fa2ab4d54cd7f4"
-    },
-    {
-      "cpf": "11111111111",
-      "email": "hugo@gmail.com",
-      "nome": "hugo",
-      "senha": "629bc9ef82140705ecc6bca4745d5b0cc169e4e97a14b9aeaad37563b22272eb30068e9fa8d7c597586182647495b4405150e4489e6756b35603022395cb3ad9"
+      "cpf": "00000000000",
+      "data de ativacao": "2024-08-02",
+      "email": "admin@admin.com",
+      "nome": "admin",
+      "senha": "eba34065a1d45b3bfd700926b250ee119b42b331977b43b61f6c9d383fcb8f2d898d2b003253796e0eda3a37d3fdffd131758ad348e94dfe9685f787c7911a42",
+      "situacao": "ativo",
+      "tipo": "admin"
     }
   ],
   "resultado": "ok"
 }
 
-$ curl localhost:5000/listar/Consulta -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMTk3MDQwNiwianRpIjoiZTFhYTQ0M2UtNWI3MC00MjViLWJlYTEtOWNmMTkzOWExN2Y2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImRvdWdsYXNAZ21haWwuY29tIiwibmJmIjoxNzIxOTcwNDA2LCJjc3JmIjoiMjJlOTQ2NDAtNjE2NS00YzU1LTlhM2UtNTEwN2JhOTk4NzQ2IiwiZXhwIjoxNzIxOTc0MDA2fQ.AxHG99mbvujq8DGe1Yn-XNZivNbT7wCFd2br-X1UsAY"
+$ curl localhost:5000/listar/Consulta -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjYyMjI4MCwianRpIjoiNGFkZGY4NTItNTcxZS00NWY2LWJjZTMtYzYwMTA1OWM4YTE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluQGFkbWluLmNvbSIsIm5iZiI6MTcyMjYyMjI4MCwiY3NyZiI6ImE5NDdmNWNiLTM5YmUtNDAwNS1iNjU3LTRlNjc2YjkzYTZhOCIsImV4cCI6MTcyMjYyNTg4MH0.hUw8YUXJs470pxtR-VpvXBQyLe-ew0q7jtxsMYktRE4"
 {
-  "detalhes": [
-    {
-      "chave": "exemplo1234567",
-      "conteudo": {
-        "descricao": "Exemplo de conte\u00fado",
-        "pedido": "35463232"
-      },
-      "data": "Mon, 22 Jul 2024 00:00:00 GMT",
-      "tipo": "marca",
-      "usuario": "douglas"
-    }
-  ],
-  "resultado": "ok"
+  "detalhes": "Cannot load attribute Usuario[1].tipo: the database session is over",
+  "resultado": "erro"
 }
-
+- não sei porque está ocorrendo este erro, mas no terminal diz:
+ERRO: Cannot load attribute Usuario[1].tipo: the database session is over
 $ curl -X POST localhost:5000/login -d "{\"login\":\"douglas@gmail.com\",\"senha\":\"douglas123\"}" -H "Content-Type: application/json" 
 {
   "detalhes": "usuario ou senha incorreto(s)",
   "resultado": "erro"
 }
 
-$ curl localhost:5000/listar/Pessoa
+$ curl localhost:5000/listar/Usuario
 {
   "msg": "Missing Authorization Header"
 }

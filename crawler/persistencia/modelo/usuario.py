@@ -16,7 +16,7 @@ class Usuario(db.Entity):
     
     # expressão da classe em str
     def __str__(self):
-        return f'{self.tipo}, {self.nome}, {str(self.cpf)}, ' +\
+        return f'{str(self.tipo)}, {self.nome}, {str(self.cpf)}, ' +\
                f'{self.email}, {self.senha}, {str(self.data_ativacao)}, {self.situacao}'
 
     # expressao da classe no formato json
