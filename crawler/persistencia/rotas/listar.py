@@ -13,13 +13,13 @@ def listar(classe):
         print(current_user)
         
         dados = None
-        # lista os dados da tabela usuarios.db
+        # lista os dados da tabela Usuario
         if classe == "Usuario":
             with db_session:
                 dados = Usuario.select()[:]
                 print(dados)
 
-        # lista os dados da tabela consultas.db
+        # lista os dados da tabela Consulta
         elif classe == "Consulta":
             with db_session:
                 dados = Consulta.select()[:]
