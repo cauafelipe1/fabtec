@@ -2,8 +2,7 @@ from geral.config import *
 from geral.cripto import *
 from modelo.usuario import *
 
-# rota para alteração de dados
-# ficou meio bagunçada mas acho que dá para entender
+# rota para ativação e desativação de usuários
 @app.route("/controlar_situacao/<string:situacao>", methods=['POST'])
 
 @jwt_required()
