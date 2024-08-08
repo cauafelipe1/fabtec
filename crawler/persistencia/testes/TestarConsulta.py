@@ -7,11 +7,11 @@ def run():
     # uma base da ideia principal quando a rota consultar for criada
     with db_session:
         # aqui será encontrado o usuario que está fazendo a requisição
-        user_id = Usuario.get(id=1)
-        if user_id:
+        user = Usuario.get(id=1)
+        if user:
             print("usuario encontrado!")
             print("detalhes do usuario:")
-            print(json.dumps(user_id.json(), indent=4))
+            print(json.dumps(user.json(), indent=4))
 
             # haverá uma verificação se a consulta já está cadastrada. Exemplo em pseudo-python:
             # dados = request.get_json()
@@ -22,7 +22,7 @@ def run():
             #   cadastra no banco (esse trambolho todo ai debaixo)
             #   retorna o conteudo
 
-            gerar_consulta = Consulta(tipo='marca', data=date.today(), chave='exemplo1234567', conteudo={'descricao': 'Exemplo de conteúdo', 'pedido': '35463232'}, usuario=user_id)
+            gerar_consulta = Consulta(tipo='marca', data=date.today(), chave='exemplo1234567', conteudo={'descricao': 'Exemplo de conteúdo', 'pedido': '35463232'}, usuario=user)
             commit()
             print("consulta cadastrada com sucesso!")
             print("detalhes da consulta:")

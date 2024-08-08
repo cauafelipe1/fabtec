@@ -1,6 +1,6 @@
 from geral.config import *
-from modelo.consulta import *
-db = Database()
+
+
 
 # criação da classe Usuario (usuário que fará o login)
 class Usuario(db.Entity):
@@ -9,15 +9,14 @@ class Usuario(db.Entity):
     cpf = Required(str)
     email = Required(str)
     senha = Required(str)
-    data_ativacao = Required(date)
-    situacao = Required(str)
+    data_ativacao = Optional(date, nullable=True)
     consultas = Set('Consulta')
     # relacao um para muitos entre usuarios e consultas
     
     # expressão da classe em str
     def __str__(self):
         return f'{str(self.tipo)}, {self.nome}, {str(self.cpf)}, ' +\
-               f'{self.email}, {self.senha}, {str(self.data_ativacao)}, {self.situacao}'
+               f'{self.email}, {self.senha}, {str(self.data_ativacao)}'
 
     # expressao da classe no formato json
     def json(self):
@@ -28,7 +27,6 @@ class Usuario(db.Entity):
             "email": self.email,
             "senha": self.senha,
             "data de ativacao": str(self.data_ativacao),
-            "situacao": self.situacao
         }
 
 

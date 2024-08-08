@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 
 # importação do pony ORM
 from pony.orm import *
-
+db = Database()
 # configurações
 app = Flask(__name__)
 from flask_cors import CORS

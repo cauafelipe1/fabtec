@@ -1,6 +1,6 @@
 from geral.config import *
-from modelo.usuario import Usuario, db
-
+from modelo.usuario import Usuario
+from geral.cripto import *
 # criação da classe consulta
 class Consulta(db.Entity):
     tipo = Required(str)
@@ -29,3 +29,11 @@ class Consulta(db.Entity):
 db.bind(provider='sqlite', filename='consultas.db', create_db=True)
 db.generate_mapping(create_tables=True)
 
+#criação do admin/root
+with db_session:
+    if Usuario.exists(id=1):
+        print("O admin/root já está operante!")
+    else:
+        admin = Usuario(tipo="admin", nome="admin", cpf="00000000000", email="admin@admin.com", senha= cifrar("admin123"), data_ativacao= date.today())
+        print("usuario admin criado com sucesso!")
+        commit()
